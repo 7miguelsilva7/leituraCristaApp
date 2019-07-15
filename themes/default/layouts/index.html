@@ -1,0 +1,38 @@
+{{ partial "header.html" . }}
+<hr>
+<ul>
+  {{ range where .Data.Pages.ByTitle "Section" "book" }}
+    <li>
+      <a href="{{ .Permalink }}"><span>{{ .Title }}</span></a>
+    </li>
+  {{ end }}
+</li>
+
+<a style="display:scroll;position:fixed;bottom:10px;right:20px;color:#f00;font-weight:bold;" href="#" title="Para o topo!">
+  <b>^<br>
+    ^</b>
+</a>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').then(function (registration) {
+            console.log('Service worker successfully registered on scope', registration.scope);
+        }).catch(function (error) {
+            console.log('Service worker failed to register', error);
+        });
+    });
+}
+
+var closeWindowLC = localStorage.getItem('closeWindowLC')
+if (closeWindowLC != 1)
+{
+console.log(closeWindowLC)
+window.open('closeWindow.html')
+}
+console.log(closeWindowLC)
+
+;
+</script>
+
+{{ partial "footer.html" . }}
